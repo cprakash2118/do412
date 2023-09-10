@@ -126,3 +126,169 @@
   126  pwd
   127  ll
   128  history > all_ocp_commands.txt
+  129  git add .
+  130  git commit -m update
+  131  git push 
+  132  oc get groups.user.openshift.io 
+  133  oc get groups.user.openshift.io | grep sre
+  134  oc --help |less
+  135  oc adm --help |less
+  136  oc adm grep --help |less
+  137  oc adm group --help |less
+  138  oc adm groups --help |less
+  139  oc adm  --help |less
+  140  chage --help 
+  141* oc adm policy 
+  142  oc get groups.user.openshift.io | grep sre
+  143  oc login -u user1 -p redhat 
+  144  oc get nodes
+  145  oc new-project p1 
+  146  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+  147  oc whoami 
+  148  oc adm policy add-cluster-role-to-group --help |less
+  149  #oc adm policy add-cluster-role-to-group cluster-admin 
+  150  oc get groups.user.openshift.io | grep sre
+  151  oc adm policy add-cluster-role-to-group cluster-admin sre_team_grp
+  152  oc describe clusterrolebindings.rbac.authorization.k8s.io |less
+  153  oc describe clusterrolebindings cluster-admin |less
+  154  oc describe clusterrolebindings cluster-admin 
+  155  oc describe clusterrolebindings.rbac.authorization.k8s.io cluster-admin 
+  156  oc describe clusterrolebindings.rbac.authorization.k8s.io |less
+  157  oc login -u user1 -p redhat 
+  158  oc whoami 
+  159  oc get nodes
+  160  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+  161  oc whoami 
+  162  oc whoami --show-console 
+  163  cd ..
+  164  ll
+  165  cat mypass.txt 
+  166  oc projects | grep kube 
+  167  oc get secret kubeadmin -n kube-system 
+  168  oc whoami 
+  169  oc login -u user1 -p redhat 
+  170  oc delete secret kubeadmin -n kube-system 
+  171  oc login -u user5 -p redhat 
+  172  oc get nodes
+  173  oc login -u user1 -p redhat 
+  174  ll
+  175  mkdir NEW
+  176  cd NEW/
+  177  pwd
+  178  ll
+  179  oc extract --help |less
+  180  #oc extract configmap/nginx --to=-
+  181  oc extract secret/sre-team-secret --to=.
+  182  oc extract secret/sre-team-secret --to=. -n openshift-config 
+  183  ll
+  184  oc extract secret/sre-team-secret --to=- -n openshift-config 
+  185  ll
+  186  rm -rf htpasswd 
+  187  ll
+  188  oc extract secret/sre-team-secret --to=- -n openshift-config 
+  189  ll
+  190  oc extract secret/sre-team-secret --to=. -n openshift-config 
+  191  ll
+  192  cat htpasswd 
+  193  htpasswd htpasswd -D user5 
+  194  htpasswd htpasswd -D user5 htpasswd 
+  195  htpasswd -D user5 htpasswd 
+  196  htpasswd -D htpasswd user5 
+  197  cat htpasswd 
+  198  oc whoami 
+  199  oc get user | grep user5
+  200  oc get user | grep -w user5
+  201  oc get identity  | grep -w user5
+  202  oc delete user user5 
+  203  oc delete user sre_team_identity_provider:user5
+  204  oc delete identity sre_team_identity_provider:user5
+  205  oc login -u user5 -p redhat
+  206  oc delete user sre_team_identity_provider:user5
+  207  oc get users | grep -w user5
+  208  oc whoami 
+  209  oc login -u user1 -p redhat 
+  210  oc delete identity sre_team_identity_provider:user5
+  211  oc delete user sre_team_identity_provider:user5
+  212  oc delete user user5
+  213  ll
+  214  cat htpasswd 
+  215  oc set data --help |less
+  216  #oc set data secret/foo --from-file=secret-dir
+  217  oc set data secret/sre-team-secret --from-file  htpasswd=htpasswd -n openshift-config 
+  218  oc login -u user5 -p redhat 
+  219  oc login -u user3 -p redhat 
+  220  ll
+  221  oc whoami 
+  222  oc login -u user30 -p redhat 
+  223  oc new-project p2
+  224  oc get nodes
+  225  oc whoami 
+  226  oc login -u user1 -p redhat 
+  227  oc describe clusterroles | grep slef
+  228  oc describe clusterroles | grep self
+  229  oc describe clusterroles | grep self|less
+  230  oc describe clusterroles | grep self-p |less
+  231  oc describe clusterroles | grep self-p 
+  232  oc describe self-provisioner
+  233  oc describe clusterroles  self-provisioner
+  234  oc describe clusterroles.rbac.authorization.k8s.io  self-provisioner
+  235  oc describe   self-provisioner
+  236  oc describe clusterrolebindings  self-provisioner
+  237  oc adm policy remove-cluster-role-from-group self-provisioner system:authenticated:oauth
+  238  oc describe clusterrolebindings  self-provisioner
+  239  oc login -u user30 -p redhat 
+  240  oc new-project p3 
+  241  oc adm policy add-cluster-role-to-group self-provisioner devops_team_grp
+  242  oc whoami \
+  243  oc whoami 
+  244  oc login -u user1 -p redhat 
+  245  oc adm policy add-cluster-role-to-group self-provisioner devops_team_grp
+  246  oc get groups.user.openshift.io | grep devops
+  247  oc login -u user11 -p redhat 
+  248  oc new-project p4
+  249  oc login -u user10 -p redhat 
+  250  oc new-project p5
+  251  oc project -q 
+  252  oc whoami 
+  253  oc get nodes
+  254  oc login -u user3 -p redhat 
+  255  oc adm policy add-cluster-role-to-user cluster-admin user10 user6
+  256  for x in `cat`; do oc new-project $x; done
+  257  oc project | grep project
+  258  oc projects | grep project
+  259  oc project -q
+  260  oc adm policy add-role-to-user admin -n application-01-team-project
+  261  oc adm policy add-role-to-user admin user11 -n application-01-team-project
+  262  oc adm policy add-role-to-user admin user12 -n application-01-team-project
+  263  oc login -u user11 -p redhat
+  264  oc whoami 
+  265  oc policy add-role-to-user admin user14 -n application-01-team-project
+  266  oc whoami 
+  267  oc get no
+  268  oc get nodes
+  269  oc policy add-role-to-user edit user15 -n application-01-team-project
+  270  oc policy add-role-to-user view user30 -n application-01-team-project
+  271  oc whoami 
+  272  oc new-app --name app01 httpd:2.4
+  273  oc get pods
+  274  oc whoami 
+  275  oc login -u user30 -p redhat
+  276  oc get pods
+  277  oc scale --replicas=5 deployment/app01 
+  278  oc project p2
+  279  oc project -q 
+  280  oc new-app --name test02 httpd2.4
+  281  oc new-app --name test02 httpd:2.4
+  282  oc get pods
+  283  oc get project
+  284  oc project application-01-team-project
+  285  oc project -q 
+  286  oc get pods
+  287  oc new-app --name test05 httpd:2.4
+  288  oc get pods
+  289  ll
+  290  cd ..
+  291  ll
+  292  cd do412/
+  293  ll
+  294  history > all_ocp_commands.txt 
