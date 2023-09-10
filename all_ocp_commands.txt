@@ -1,0 +1,128 @@
+    1  ssh root@utiltiy 
+    2  ssh root@utility 
+    3  mkdir work 
+    4  cd work/
+    5  vim mypass.txt
+    6  source mypass.txt 
+    7  oc login -u ${_user_name} -p ${_kubeadmin}  ${_api_url}
+    8  cat mypass.txt
+    9  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url}
+   10  vim mypass.txt 
+   11  source mypass.txt 
+   12  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url_c1}
+   13  ll
+   14  cat mypass.txt 
+   15  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url_c1}
+   16  uptime
+   17  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url_c1}
+   18  ssh root@utility  
+   19  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url_c1}
+   20  ll
+   21  oc get pods -n openshift-authentication 
+   22  oc get pods -n openshift-authentication --kubeconfig kubeconfig
+   23  oc login -u ${_user_name} -p ${_kube_pass}  ${_api_url_c1}
+   24  cat mypass.txt 
+   25  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   26  oc login -u ${_user_name} -p ${_kube_pass} https://api.ocp4.example.com:6443
+   27  oc get pods -n openshift-authentication --kubeconfig kubeconfig
+   28  oc get pods -n openshift-apiserver --kubeconfig kubeconfig
+   29  oc get pods -n openshift-authentication --kubeconfig kubeconfig
+   30  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   31  oc get pods -n openshift-apiserver --kubeconfig kubeconfig
+   32  oc get pods -n openshift-authentication --kubeconfig kubeconfig
+   33  oc delete pods oauth-openshift-56959ddf55-cwqrj -n openshift-authentication --kubeconfig kubeconfig
+   34  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   35  oc get pods -n openshift-authentication --kubeconfig kubeconfig
+   36  oc get pods -n openshift-authentication --kubeconfig kubeconfig -w
+   37  oc get pods -n openshift-authentication --kubeconfig kubeconfig 
+   38  #oc delete pods oauth-openshift-56959ddf55-r752g -n openshift-authentication --kubeconfig kubeconfig
+   39  oc get pods -n openshift-authentication --kubeconfig kubeconfig 
+   40  oc delete pods oauth-openshift-56959ddf55-r752g -n openshift-authentication --kubeconfig kubeconfig
+   41  oc get pods -n openshift-authentication --kubeconfig kubeconfig 
+   42  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   43  cat mypass.txt 
+   44  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   45  oc whoami 
+   46  ll
+   47  htpasswd -c -B -b sre_htpasswd_file user1 redhat
+   48  htpasswd  -B -b sre_htpasswd_file user2 redhat
+   49  htpasswd  -B -b sre_htpasswd_file user3 redhat
+   50  htpasswd  -B -b sre_htpasswd_file user4 redhat
+   51  htpasswd  -B -b sre_htpasswd_file user5 redhat
+   52  ll
+   53  cat sre_htpasswd_file 
+   54  for x in {6..10}; do file_name=devops_htpasswd_file ; if [ -f $file_name ]; then htpasswd -B -b $file_name user$x redhat ; else htpasswd -c -B -b $file_name user$x redhat; fi; done
+   55  ll
+   56  ls -lrth 
+   57  for x in {11..30}; do file_name=application_01_htpasswd_file ; if [ -f $file_name ]; then htpasswd -B -b $file_name user$x redhat ; else htpasswd -c -B -b $file_name user$x redhat; fi; done
+   58  cat application_01_htpasswd_file 
+   59  ls -lrth 
+   60  for x in {31..50}; do file_name=application_02_htpasswd_file ; if [ -f $file_name ]; then htpasswd -B -b $file_name user$x redhat ; else htpasswd -c -B -b $file_name user$x redhat; fi; done
+   61  ls -lrth 
+   62  cat application_02_htpasswd_file 
+   63  for x in {51..70}; do file_name=application_03_htpasswd_file ; if [ -f $file_name ]; then htpasswd -B -b $file_name user$x redhat ; else htpasswd -c -B -b $file_name user$x redhat; fi; done
+   64  ls -lrth 
+   65  oc create secret generic sre_team_secret --from-file htpasswd=sre_htpasswd_file -n opnehsift-config 
+   66  oc create secret generic sre_team_secret --from-file htpasswd=sre_htpasswd_file -n openshift-config 
+   67  oc create secret generic sre-team-secret --from-file htpasswd=sre_htpasswd_file -n openshift-config 
+   68  oc create secret generic devops-team-secret --from-file htpasswd=devops_htpasswd_file -n openshift-config 
+   69  oc create secret generic application-01-team-secret --from-file htpasswd=application-01_htpasswd_file -n openshift-config 
+   70  oc create secret generic application-01-team-secret --from-file htpasswd=application_01_htpasswd_file -n openshift-config 
+   71  oc create secret generic application-02-team-secret --from-file htpasswd=application_02_htpasswd_file -n openshift-config 
+   72  oc create secret generic application-03-team-secret --from-file htpasswd=application_03_htpasswd_file -n openshift-config 
+   73  oc get secret -n openshift-config 
+   74  oc get secret -n openshift-config | grep tea 
+   75  oc get oauth/cluster 
+   76  oc get oauth/cluster -o yaml > oauth.yaml 
+   77  vim oauth.yaml 
+   78  oc replace -f oauth.yaml 
+   79  oc login -u user1 -p redhat 
+   80  history 
+   81  oc login -u user1 -p redhat 
+   82  oc get pods -n openshift-authentication 
+   83  oc login -u user1 -p redhat 
+   84  oc delete pod auth-openshift-56959ddf55-xz7rq -n openshift-authentication
+   85  oc login -u user1 -p redhat 
+   86  oc get pods -n openshift-authentication 
+   87  oc delete pod oauth-openshift-56959ddf55-xz7rq -n openshift-authentication
+   88  oc get pods -n openshift-authentication 
+   89  oc login -u user1 -p redhat 
+   90  for x in {2..60}; do oc login -u user$x -p redhat ; done
+   91  oc login -u ${_user_name} -p ${_kube_pass} ${_api_url_c1}
+   92  oc get user
+   93  oc get user | grep devops
+   94  oc get user | grep sre
+   95  oc get user | grep application01
+   96  oc get user | grep application-01
+   97  oc get user | grep application-02
+   98  oc get user | grep application-03
+   99  ll
+  100  oc get groups
+  101  oc get group
+  102  oc adm groups --help 
+  103  oc adm groups new sre_team_grp 
+  104  oc get groups
+  105  oc adm groups add-users --help |less
+  106  oc adm groups add-users sre_team_grp user1 user2 user3 user4 user5 
+  107  oc get groups 
+  108  fox x in {6..10}
+  109  for x in {6..10}; do oc adm group add-users devops_team_grp user$x; done
+  110  for x in {6..10}; do oc adm group add-user devops_team_grp user$x; done
+  111  for x in {6..10}; do oc adm groups add-users devops_team_grp user$x; done
+  112  oc adm groups new devops_team_grp
+  113  for x in {6..10}; do oc adm groups add-users devops_team_grp user$x; done
+  114  oc get groups
+  115  #for x in {11..30}; do oc adm groups add-users application-01_team_grp user$x; done
+  116  oc adm groups new application-01_team_grp
+  117  oc adm groups new application-02_team_grp
+  118  oc adm groups new application-03_team_grp
+  119  for x in {11..30}; do oc adm groups add-users application-01_team_grp user$x; done
+  120  for x in {31..50}; do oc adm groups add-users application-02_team_grp user$x; done
+  121  for x in {51..60}; do oc adm groups add-users application-03_team_grp user$x; done
+  122  oc get groups.user.openshift.io 
+  123  ll
+  124  git clone https://github.com/cprakash2118/do412
+  125  cd do412/
+  126  pwd
+  127  ll
+  128  history > all_ocp_commands.txt
